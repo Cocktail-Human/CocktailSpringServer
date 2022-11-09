@@ -40,6 +40,7 @@ public class ActivityService {
         return activity.getId();
     }
 
+    //commit&push test
 //    @Transactional
 //    public Integer updateImageURL(Integer id, ActivityDto activityDto){
 //        Activity activity = activityRepository.findById(id)
