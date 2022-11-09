@@ -1,4 +1,4 @@
-package com.springserver.cocktailspringserver.servies;
+package com.springserver.cocktailspringserver.service;
 
 import com.springserver.cocktailspringserver.app.dto.activity.*;
 import com.springserver.cocktailspringserver.domain.activity.Activity;

@@ -4,8 +4,7 @@ import com.springserver.cocktailspringserver.app.dto.activity.ActivityListRespon
 import com.springserver.cocktailspringserver.app.dto.activity.ActivityResponseDto;
 import com.springserver.cocktailspringserver.app.dto.activity.ActivitySaveRequestDto;
 import com.springserver.cocktailspringserver.app.dto.activity.ActivityUpdateRequestDto;
-import com.springserver.cocktailspringserver.servies.ActivityService;
-import io.swagger.models.auth.In;
+import com.springserver.cocktailspringserver.service.ActivityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
