@@ -1,16 +1,18 @@
-package com.springserver.cocktailspringserver.data.entity;
+package com.springserver.cocktailspringserver.domain.activity;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.springserver.cocktailspringserver.domain.BaseTimeEntity;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
-@Setter
-public class Activity {
+public class Activity extends BaseTimeEntity {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
@@ -28,11 +30,23 @@ public class Activity {
     private String endTime;
 
     @Column(name = "image", nullable = false, length = 3000)
-    private String image;
+    private String imageURL;
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ")";
     }
+
+    public void update(String title, String description, String startTime, String endTime){
+        this.title = title;
+        this.description = description;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public void updateImageURL(String imageURL){
+        this.imageURL = imageURL;
+    }
+
 }
