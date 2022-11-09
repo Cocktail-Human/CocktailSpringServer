@@ -1,7 +1,7 @@
 package com.springserver.cocktailspringserver.servies;
 
-import com.springserver.cocktailspringserver.app.dto.ActivityDto;
-import com.springserver.cocktailspringserver.app.dto.ActivityResponseDto;
+import com.springserver.cocktailspringserver.app.dto.activity.ActivityDto;
+import com.springserver.cocktailspringserver.app.dto.activity.ActivityResponseDto;
 import com.springserver.cocktailspringserver.domain.activity.Activity;
 import com.springserver.cocktailspringserver.domain.activity.ActivityRepository;
 import lombok.RequiredArgsConstructor;

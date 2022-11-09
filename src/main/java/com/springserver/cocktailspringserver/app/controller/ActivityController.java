@@ -1,10 +1,8 @@
 package com.springserver.cocktailspringserver.app.controller;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.springserver.cocktailspringserver.app.dto.ActivityDto;
-import com.springserver.cocktailspringserver.app.dto.ActivityResponseDto;
+import com.springserver.cocktailspringserver.app.dto.activity.ActivityDto;
+import com.springserver.cocktailspringserver.app.dto.activity.ActivityResponseDto;
 import com.springserver.cocktailspringserver.servies.ActivityService;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
