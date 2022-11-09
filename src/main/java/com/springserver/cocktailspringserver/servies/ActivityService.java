@@ -2,6 +2,8 @@ package com.springserver.cocktailspringserver.servies;
 
 import com.springserver.cocktailspringserver.app.dto.activity.ActivityDto;
 import com.springserver.cocktailspringserver.app.dto.activity.ActivityResponseDto;
+import com.springserver.cocktailspringserver.app.dto.activity.ActivitySaveRequestDto;
+import com.springserver.cocktailspringserver.app.dto.activity.ActivityUpdateRequestDto;
 import com.springserver.cocktailspringserver.domain.activity.Activity;
 import com.springserver.cocktailspringserver.domain.activity.ActivityRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,22 +20,27 @@ public class ActivityService {
     private final ActivityRepository activityRepository;
 
     @Transactional
-    public ActivityResponseDto save(ActivityDto activityDto){
-        Integer id = activityRepository.save(activityDto.toEntity()).getId();
-        Activity activity =  activityRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("해당 활동이 없습니다. id=" + id));
-        return new ActivityResponseDto(activity);
+    public ActivitySaveRequestDto save(ActivitySaveRequestDto requestDto){
+        //Entity 저장 후, 받아와
+        Activity activity = activityRepository.save(requestDto.toEntity());
+        //Dto로 변환후 return
+        return new ActivitySaveRequestDto(activity);
     }
 
     @Transactional
-    public Integer update(Integer id, ActivityDto activityDto){
+    public Integer update(Integer id, ActivityUpdateRequestDto requestDto){
         Activity activity = activityRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 활동이 없습니다. id=" + id));
 
-        activity.update(activity.getTitle(),activity.getDescription(),activity.getStartTime(),activity.getEndTime());
+        activity.update(
+                requestDto.getTitle(),
+                requestDto.getDescription(),
+                requestDto.getStartTime(),
+                requestDto.getEndTime()
+        );
 
         //id 반환, 혹은 객체 반환
-        return id;
+        return activity.getId();
     }
 
     @Transactional
@@ -55,11 +62,11 @@ public class ActivityService {
         activityRepository.delete(activity);
     }
 
-    public ActivityDto findById(Integer id){
+    public ActivityResponseDto findById(Integer id){
         Activity entity = activityRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 활동이 없습니다. id="+id));
 
-        return new ActivityDto(entity);
+        return new ActivityResponseDto(entity);
     }
 
     @Transactional(readOnly = true)

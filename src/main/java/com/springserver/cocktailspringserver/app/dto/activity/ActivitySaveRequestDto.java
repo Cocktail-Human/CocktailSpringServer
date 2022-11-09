@@ -2,6 +2,7 @@ package com.springserver.cocktailspringserver.app.dto.activity;
 
 import com.springserver.cocktailspringserver.domain.activity.Activity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -10,13 +11,14 @@ import java.io.Serializable;
  */
 
 @Getter
+@NoArgsConstructor
 public class ActivitySaveRequestDto implements Serializable {
-    private final Integer id;
-    private final String title;
-    private final String description;
-    private final String startTime;
-    private final String endTime;
-    private final String image;
+    private Integer id;
+    private String title;
+    private String description;
+    private String startTime;
+    private String endTime;
+    private String image;
 
     public ActivitySaveRequestDto(Activity entity) {
         this.id = entity.getId();
