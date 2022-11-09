@@ -27,11 +27,6 @@ public class ActivityDto implements Serializable {
         this.endTime = entity.getEndTime();
         this.image = entity.getImageURL();
     }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof ActivityDto;
-    }
-
     public Activity toEntity(){
         return Activity.builder()
                 .id(id)

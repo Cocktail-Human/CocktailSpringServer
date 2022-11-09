@@ -1,5 +1,6 @@
 package com.springserver.cocktailspringserver.app.controller;
 
+import com.springserver.cocktailspringserver.app.dto.activity.ActivityListResponseDto;
 import com.springserver.cocktailspringserver.app.dto.activity.ActivityResponseDto;
 import com.springserver.cocktailspringserver.app.dto.activity.ActivitySaveRequestDto;
 import com.springserver.cocktailspringserver.app.dto.activity.ActivityUpdateRequestDto;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,7 +33,12 @@ public class ActivityApiController {
     }
 
     @GetMapping("/api/v1/activity/{id}")
-    public ResponseEntity<ActivityResponseDto> read(@PathVariable Integer id){
+    public ResponseEntity<ActivityResponseDto> findById(@PathVariable Integer id){
         return ResponseEntity.status(HttpStatus.OK).body(activityService.findById(id));
+    }
+
+    @GetMapping("/api/v1/activity")
+    public ResponseEntity<List<ActivityListResponseDto>> findAllDesc(){
+        return ResponseEntity.status(HttpStatus.OK).body(activityService.findAllDesc());
     }
 }

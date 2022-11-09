@@ -1,9 +1,6 @@
 package com.springserver.cocktailspringserver.servies;
 
-import com.springserver.cocktailspringserver.app.dto.activity.ActivityDto;
-import com.springserver.cocktailspringserver.app.dto.activity.ActivityResponseDto;
-import com.springserver.cocktailspringserver.app.dto.activity.ActivitySaveRequestDto;
-import com.springserver.cocktailspringserver.app.dto.activity.ActivityUpdateRequestDto;
+import com.springserver.cocktailspringserver.app.dto.activity.*;
 import com.springserver.cocktailspringserver.domain.activity.Activity;
 import com.springserver.cocktailspringserver.domain.activity.ActivityRepository;
 import lombok.RequiredArgsConstructor;
@@ -43,16 +40,16 @@ public class ActivityService {
         return activity.getId();
     }
 
-    @Transactional
-    public Integer updateImageURL(Integer id, ActivityDto activityDto){
-        Activity activity = activityRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("해당 활동이 없습니다. id=" + id));
-
-        activity.updateImageURL(activityDto.getImage());
-
-        //id 반환, 혹은 객체 반환
-        return id;
-    }
+//    @Transactional
+//    public Integer updateImageURL(Integer id, ActivityDto activityDto){
+//        Activity activity = activityRepository.findById(id)
+//                .orElseThrow(()->new IllegalArgumentException("해당 활동이 없습니다. id=" + id));
+//
+//        activity.updateImageURL(activityDto.getImage());
+//
+//        //id 반환, 혹은 객체 반환
+//        return id;
+//    }
 
     @Transactional
     public void delete(Integer id){
@@ -70,9 +67,9 @@ public class ActivityService {
     }
 
     @Transactional(readOnly = true)
-    public List<ActivityDto> findAllDesc(){
+    public List<ActivityListResponseDto> findAllDesc(){
         return activityRepository.findAllDesc().stream()
-                .map(ActivityDto::new)
+                .map(ActivityListResponseDto::new)
                 .collect(Collectors.toList());
     }
 
