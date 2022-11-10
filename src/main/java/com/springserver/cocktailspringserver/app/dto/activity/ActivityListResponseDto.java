@@ -1,6 +1,7 @@
 package com.springserver.cocktailspringserver.app.dto.activity;
 
 import com.springserver.cocktailspringserver.domain.activity.Activity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @Getter
 public class ActivityListResponseDto implements Serializable {
 
+    @ApiModelProperty(value = "활동 id")
     private final Integer id;
     private final String title;
     private final String startTime;

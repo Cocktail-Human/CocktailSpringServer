@@ -1,6 +1,7 @@
 package com.springserver.cocktailspringserver.app.dto.activity;
 
 import com.springserver.cocktailspringserver.domain.activity.Activity;
+import com.springserver.cocktailspringserver.domain.alcohol.Alcohol;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 public class ActivitySaveRequestDto implements Serializable {
+
     private Integer id;
     private String title;
     private String description;
@@ -28,8 +30,7 @@ public class ActivitySaveRequestDto implements Serializable {
         this.endTime = entity.getEndTime();
         this.image = entity.getImageURL();
     }
-
-    public Activity toEntity(){
+    public Activity toEntity() {
         return Activity.builder()
                 .id(id)
                 .title(title)
@@ -39,5 +40,4 @@ public class ActivitySaveRequestDto implements Serializable {
                 .imageURL(image)
                 .build();
     }
-
 }

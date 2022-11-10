@@ -1,16 +1,17 @@
 package com.springserver.cocktailspringserver.domain.alcohol;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.springserver.cocktailspringserver.domain.BaseTimeEntity;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
-@Setter
-public class Alcohol {
+public class Alcohol extends BaseTimeEntity {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
@@ -21,6 +22,7 @@ public class Alcohol {
     @Column(name = "kind", nullable = false, length = 20)
     private String kind;
 
+    //proof 변경해야함
     @Column(name = "degree")
     private Integer degree;
 
@@ -35,4 +37,12 @@ public class Alcohol {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ")";
     }
+    public void update(String title, String kind, Integer degree, String image, Integer capacity){
+        this.title = title;
+        this.kind = kind;
+        this.degree = degree;
+        this.image = image;
+        this.capacity = capacity;
+    }
+
 }
