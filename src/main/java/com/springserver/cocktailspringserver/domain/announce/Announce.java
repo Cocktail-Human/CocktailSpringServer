@@ -1,16 +1,18 @@
 package com.springserver.cocktailspringserver.domain.announce;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.springserver.cocktailspringserver.domain.BaseTimeEntity;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-public class Announce {
+public class Announce extends BaseTimeEntity {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
@@ -31,5 +33,12 @@ public class Announce {
     public String toString() {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ")";
+    }
+
+    public void update(String title, String kind, String description, String image){
+        this.title = title;
+        this.kind = kind;
+        this.description = description;
+        this.image = image;
     }
 }

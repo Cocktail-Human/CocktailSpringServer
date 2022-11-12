@@ -21,7 +21,7 @@ public class AlcoholApiController {
 
     private final AlcoholService service;
     @ApiImplicitParam(name = "requestDto", value = "저장할 주류")
-    @ApiOperation(value = "주류 삭제",notes = "주류를 저장한다.")
+    @ApiOperation(value = "주류 저장", notes = "주류를 저장한다.")
     @PostMapping("/api/v1/alcohol")
     public ResponseEntity<AlcoholSaveRequestDto> save(@RequestBody AlcoholSaveRequestDto requestDto){
         return ResponseEntity.status(HttpStatus.OK).body(service.save(requestDto));

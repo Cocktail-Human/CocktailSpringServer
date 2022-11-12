@@ -19,8 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ActivityApiController {
     private final ActivityService activityService;
-    @ApiImplicitParam(name = "requestDto", value = "저장할 활동")
-    @ApiOperation(value = "활동 삭제",notes = "활동을 저장한다.")
+    @ApiImplicitParam(name = "requestDto", value = "저장할 활동", dataType = "application-json")
+    @ApiOperation(value = "활동 저장",notes = "활동을 저장한다.")
     @PostMapping("/api/v1/activity")
     public ResponseEntity<ActivitySaveRequestDto> save(@RequestBody ActivitySaveRequestDto requestDto){
         return ResponseEntity.status(HttpStatus.OK).body(activityService.save(requestDto));
